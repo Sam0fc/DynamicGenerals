@@ -12,6 +12,7 @@ HELP_COMMAND = "help"
 INVOCATION_PREFIX = "!"
 CHANNEL_NAME = "Random Speak "
 INIT_COMMAND="init"
+QUIT_COMMAND="quit"
 
 
 @client.event
@@ -44,6 +45,8 @@ async def on_message(message):
     channelCategory = await doInit(message)
     await message.delete()
     await doMainLoop(message,channelCategory)
+  if call == QUIT_COMMANDL:
+      quit()
   await message.delete()
 
 async def doInit(message):
@@ -104,19 +107,10 @@ def doHelp():
   #constructs the string starting with a quote prifx
   outString = ">>> "
   #create command
-  outString += "**" + INVOCATION_PREFIX + CREATE_COMMAND + "**" + " *[team_name]* will create a team, with name team_name, and assign the user to that team \n"
+  outString += "**" + INVOCATION_PREFIX + INIT_COMMAND + "**" + " will start the bot. It will create a category and just work ok. \n"
   #join command
-  outString += "**" + INVOCATION_PREFIX + JOIN_COMMAND + "**" + " *[team_name]* will assign the user to the team \n"
+  outString += "**" + INVOCATION_PREFIX + QUIT_COMMAND + "**" + " will tell the bot to fuck off and die \n"
   #leave command
-  outString += "**" + INVOCATION_PREFIX + LEAVE_COMMAND + "**" + " *[team_name]* will deassign the user from the team \n"
-  #del command
-  outString += "**" + INVOCATION_PREFIX + DELETE_COMMAND + "**" + " *[team_name]* will **PERMANENTLY** delete the team and all channels associated. \n"
-  #returns the created string
-  outString += "**" + INVOCATION_PREFIX + PING_COMMAND + "**" + " can check whether the bot is active \n"
-
-  outString += "**" + INVOCATION_PREFIX + RAND_COMMAND + "**" + " *[max_number]* will get a random number between 1 and max_number, inclusive. (default 20)\n"
-
-  outString += "**" + INVOCATION_PREFIX + CAT_COMMAND + "**" + " 🐈 \n"
   return outString
 
 
