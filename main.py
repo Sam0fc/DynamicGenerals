@@ -45,7 +45,7 @@ async def on_message(message):
     channelCategory = await doInit(message)
     await message.delete()
     await doMainLoop(message,channelCategory)
-  if call == QUIT_COMMANDL:
+  if call == QUIT_COMMAND:
       quit()
   await message.delete()
 
